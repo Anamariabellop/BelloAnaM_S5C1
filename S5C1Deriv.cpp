@@ -26,7 +26,7 @@ int main(){
     
     float arrcos[N];
     
-    for( int i=1; i<N-1; i= i + dx)
+    for( int i=1; i<N-1; i+=dx)
     {
         arrx[i]=i        
     }
