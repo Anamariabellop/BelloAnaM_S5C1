@@ -2,38 +2,39 @@
 #include<cstring>
 using namespace std;
 
+
+
 int arr1[5]={1,2,3,4,5};
 int arr2[5]={10,20,30,40,50};
 
-int producto( int array[], int array2[]);
-int ppunto(int array[], int array2[]);
+//int arrproducto[5]={0,0,0,0,0};
 
+string producto(int arr1[], int arr2[]);
+int  ppunto(int arr1[], int arr2[]);
 
-int main(){
-    
-   cout <<  producto(arr1, arr2) << endl;
-   cout << ppunto(arr1, arr2) << endl;
-    
- return 0;   
+int main()
+{
+
+    cout <<"El producto entre arreglos es:" << producto(arr1, arr2) << endl;
+    cout <<"El producto punto de los dos arreglos es:" << ppunto(arr1, arr2) << endl;
+    return 0;
 }
 
-int producto( int array[], int array2[]){
-    int arrproducto[5];
-    
-    for( int i=0; i<5; i++)
+
+string producto(int arr1[], int arr2[]){
+
+    string multiplicacion;
+    for(int i=0; i<5;i++)
     {
-     arrproducto[i]= (array[i]*array2[i]);    
-    }   
-    
-    for(int i=0; i<5; i++)
-    {
-        cout << arrproducto[i] << endl;
+        multiplicacion= multiplicacion + " "+ std::to_string(arr1[i]*arr2[i]);
     }
+    return multiplicacion;
 }
 
-int ppunto(int array[], int array2[]){
+int ppunto(int arr1[], int arr2[]){
     int resultado=0;
-    for(int i=0; i<5; i++ )
+
+    for(int i=0; i<5;i++ )
     {
         resultado+= arr1[i]*arr2[i];
     }
