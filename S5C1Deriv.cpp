@@ -26,17 +26,17 @@ int main(){
     
     float arrcos[N];
     
-    for( int i=1; i<N-1; i+=dx)
+    for( int i=1; i<N-1; i++)
     {
-        arrx[i]=i        
+        arrx[i]=i;        
     }
     
-    for( int i=0; i<N; i++);
+    for( int i=0; i<N; i++)
     {
         arrcos[i]= cos(arrx[i]);
     }    
     
-    *derivada();
+    //*derivada();
      return 0;   
    
 }
@@ -50,5 +50,5 @@ float * derivada(int *funcion, float deltax, int numero){
      arrderivada[i]=(funcion[i+1]-funcion[i-1])/(2*deltax);   
     }
     
-   return *arrderivada; 
+   return arrderivada; 
 }
