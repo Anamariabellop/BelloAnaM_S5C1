@@ -31,7 +31,7 @@ int main()
     float* arreglo= new float [N];
     float* arrcos = new float [N];
 
-    float dx= (b-a)/(N);
+    float dx= (b-a)/(N-1);
     //float espaciado;
     arreglo[0]=a;
     arreglo[N]=b;
