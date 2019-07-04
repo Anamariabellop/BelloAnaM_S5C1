@@ -16,7 +16,6 @@ int main()
     string filename3;
     filename3= "derivada.dat";
     
-    
     float a;
     float b;
     int N;
@@ -32,7 +31,11 @@ int main()
     float* arreglo= new float [N];
     float* arrcos = new float [N];
 
-    float dx= (b-a)/(N-1);
+    float dx= (b-a)/(N);
+    //float espaciado;
+    arreglo[0]=a;
+    arreglo[N]=b;
+    
     ofstream outfile;
     outfile.open(filename1);
     
@@ -42,49 +45,48 @@ int main()
     ofstream outfile3;
     outfile3.open(filename3);
     
-    for(int i= a; i<=N ; i++ )
-    {
-        arreglo[i]= i;
-
-        if(i==N)
-            {
-                arreglo[i]= b;
-            }
+    for(int i=1; i<N ; i++ ) //arreglox 
+    {  
+      arreglo[i]= arreglo[i-1]+dx;
     }
+    //cout << arreglo[0]<< endl;
    
-    for (int i=a; i<=N; i++)
+    for (int i=0; i<N; i++)//arreglo cos
     {
         arrcos[i]= cos(arreglo[i]);
     }
-
-    for (int i=1; i<=N; i++)
-    {
-    outfile << arreglo[i] << endl;
-    }
+    cout << "  " << endl;
     
-    for (int i=1; i<=N; i++)
+    for (int i=0; i<N; i++) //imprimo arreglox
+    {
+    outfile<< arreglo[i] << endl;
+    }
+    cout << "  " << endl;
+    //cout << arreglo[N]<< endl;
+    
+    for (int i=0; i<N; i++)// imprimo cos 
     {
      outfile2 << arrcos[i] << endl;   
     }
+        cout << "  " << endl;
 
-    outfile3<< derivada(arrcos, dx, N, filename3) << endl;
+    outfile3<< derivada(arrcos, dx, N, filename3) << endl;// imprimo derivada
     outfile.close();
     outfile2.close();
+    
     return 0;
 }
 
-float* derivada(float arr[], float h, int n, string filename3)
+float* derivada(float arr[], float h, int n, string filename)
 {
-    float* deriva= new float [n];
+    float* arrderiva= new float [n];
     ofstream outfile3;
-    outfile3.open(filename3);
-    
-     for(int i=0; i<=n; i++)
+    outfile3.open(filename);
+     for(int i=0; i<n; i++)
      {
-         deriva[i] = (arr[i+1]-arr[i-1])/(2*h);
-         outfile3<< deriva[i] << endl;
+         arrderiva[i] = (arr[i+1]-arr[i-1])/(2*h);
+         outfile3<< arrderiva[i] << endl;
     }
-
-    return deriva;
+    return arrderiva;
     outfile3.close();
 }
